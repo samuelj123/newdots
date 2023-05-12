@@ -1,0 +1,5 @@
+alias gp='cd /mnt/c/Users/esthe/DOCUMENTS/Sam/esshealth/src'
+alias ga='cd ~/.config/bash && nvim aliases'
+alias gnc='cd ~/.config/nvim && nvim init.lua'
+alias gbc='cd ~/.config/bash && nvim bashrc'
+alias config='/usr/bin/git --git-dir=/home/sam/.cfg --work-tree=/home/sam'
