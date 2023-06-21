@@ -169,6 +169,9 @@ vim.o.timeoutlen = 300
 vim.o.completeopt = 'menuone,noselect' -- Set completeopt to have a better completion experience
 vim.o.termguicolors = true -- NOTE: You should make sure your terminal supports this
 vim.o.foldmethod = 'marker' -- put { { {<NO> for folding
+vim.o.tabstop=2
+vim.o.shiftwidth=2
+
 
 -- {{{1 [[ Basic Keymaps ]]
 -- {{{2 Keymaps for better default experience
@@ -223,8 +226,18 @@ vim.keymap.set('n', '<leader>/', function()
     previewer = false,
   })
 end, { desc = '[/] Fuzzily search in current buffer' })
-
-vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
+local utils = require('telescope.utils')
+local builtin = require('telescope.builtin')
+_G.project_files = function()
+    local _, ret, _ = utils.get_os_command_output({ 'git', 'rev-parse', '--is-inside-work-tree' })
+    if ret == 0 then
+        builtin.git_files()
+    else
+        builtin.find_files()
+    end
+end
+vim.api.nvim_set_keymap('n', '<leader>sf', '<cmd>lua project_files()<CR>', {noremap=true})
+-- vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })

@@ -7,8 +7,16 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 config config --local status.showUntrackedFiles no
 config checkout
 ```
+# Fonts
+Need to install Nerd-fonts for the nerd-font-awesomeness
+- FiraCode Mono Nerd Font is a good font to install
+
 # Neovim
+I think just running Neovim once or twice should install all plugins
+
 # Tmux
+I think just running tmux and pressing Ctrl+S and Shift I should do the trick
+
 # Bash
 
 
