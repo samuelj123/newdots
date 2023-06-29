@@ -136,6 +136,9 @@ dracula.setup({
       return vim.fn.executable 'make' == 1
     end,
   },
+  {
+    'ThePrimeagen/harpoon'
+  },
 
   { --{{{2 Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
@@ -171,6 +174,7 @@ vim.o.termguicolors = true -- NOTE: You should make sure your terminal supports 
 vim.o.foldmethod = 'marker' -- put { { {<NO> for folding
 vim.o.tabstop=2
 vim.o.shiftwidth=2
+vim.o.clipboard='unnamedplus'
 
 
 -- {{{1 [[ Basic Keymaps ]]
@@ -200,7 +204,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
--- {{{1 [[ Configure Telescope ]]
+-- {{{1 [[ Configure Telescope and Harpoon ]]
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
   defaults = {
@@ -213,6 +217,15 @@ require('telescope').setup {
   },
 }
 
+require('harpoon').setup {
+}
+
+vim.keymap.set('n', '<A-`>', ':lua require("harpoon.mark").add_file()<CR>', {silent = true})
+vim.keymap.set('n', '<A-0>', ':lua require("harpoon.ui").toggle_quick_menu()<CR>', {silent = true})
+vim.keymap.set('n', '<A-1>', ':lua require("harpoon.ui").nav_file(1)<CR>', {silent = true})
+vim.keymap.set('n', '<A-2>', ':lua require("harpoon.ui").nav_file(2)<CR>', {silent = true})
+vim.keymap.set('n', '<A-3>', ':lua require("harpoon.ui").nav_file(3)<CR>', {silent = true})
+vim.keymap.set('n', '<A-4>', ':lua require("harpoon.ui").nav_file(4)<CR>', {silent = true})
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
 
