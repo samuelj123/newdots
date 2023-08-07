@@ -1,8 +1,14 @@
-alias gp='cd /mnt/c/Users/esthe/DOCUMENTS/Sam/esshealth/src'
+# ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+alias gp='cd financeapp/ && nvim'
 alias ga='cd ~/.config/bash && nvim aliases'
 alias gnc='cd ~/.config/nvim && nvim init.lua'
 alias gbc='cd ~/.config/bash && nvim bashrc'
 alias config='/usr/bin/git --git-dir=/home/sam/.cfg --work-tree=/home/sam'
+alias gtc='nvim ~/.config/tmux/tmux.conf'
 
 # Paths
 export PATH=${PATH}:~/.local/bin

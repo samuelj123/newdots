@@ -90,7 +90,7 @@ dracula.setup({
   },
   show_end_of_buffer = true, -- default false
   transparent_bg = true, -- default false
-  lualine_bg_color = "#44475a", -- default nil
+  lualine_bg_color =nil, -- default nil
   italic_comment = true, -- default false
   overrides = {
     -- Examples
@@ -110,10 +110,26 @@ dracula.setup({
       options = {
         icons_enabled = true,
         theme = 'dracula',
-        component_separators = {left = '', right = '' },
-        section_separators = {left = '', right = ''},
+        component_separators = {left = '', right = '' },
+        section_separators = {left = '', right = ''},
       },
-    },
+      sections = {
+        lualine_a = {'mode'},
+        lualine_b = {'branch', 'diff', 'diagnostics'},
+        lualine_c = {'filename'},
+        lualine_x = {'filetype'},
+        lualine_y = {'progress'},
+        lualine_z = {'buffers'}
+      },
+      inactive_sessions = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = {'filename'},
+        lualine_x = {'location'},
+        lualine_y = {},
+        lualine_z = {}
+      }
+      }
   },
 
   { --{{{2 Add indentation guides even on blank lines
@@ -175,6 +191,7 @@ vim.o.foldmethod = 'marker' -- put { { {<NO> for folding
 vim.o.tabstop=2
 vim.o.shiftwidth=2
 vim.o.clipboard='unnamedplus'
+vim.opt.showmode = false
 
 
 -- {{{1 [[ Basic Keymaps ]]
@@ -466,3 +483,4 @@ cmp.setup {
 -- vim: ts=2 sts=2 sw=2 et
 -- TPW4G_N4G6Z3 
 -- pw 8747119618
+-- 
